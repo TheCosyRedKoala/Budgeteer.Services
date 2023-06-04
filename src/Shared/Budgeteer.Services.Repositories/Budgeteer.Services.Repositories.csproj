@@ -1,0 +1,15 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net6.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\Models\TCRK.Models.Budgeteer\TCRK.Models.Budgeteer.csproj" />
+    <ProjectReference Include="..\Budgeteer.Services.Domain\Budgeteer.Services.Domain.csproj" />
+    <ProjectReference Include="..\Budgeteer.Services.Persistence\Budgeteer.Services.Persistence.csproj" />
+  </ItemGroup>
+
+</Project>
