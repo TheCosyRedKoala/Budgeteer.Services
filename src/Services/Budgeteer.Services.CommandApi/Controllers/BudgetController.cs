@@ -20,6 +20,12 @@ public class BudgetController : ControllerBase
 		return await _service.CreateAsync(model);
 	}
 
+	[HttpPut("{id}")]
+	public async Task UpdateByIdAsync([FromBody] BudgetDto.Mutate model, Guid id)
+	{
+		await _service.UpdateByIdAsync(id, model);
+	}
+
 	[HttpPut("AddMonthlyBudget")]
 	public async Task AddMonthlyBudgetAsync([FromBody] BudgetRequest.AddMonthlyBudget request)
 	{

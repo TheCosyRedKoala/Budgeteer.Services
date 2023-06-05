@@ -17,6 +17,11 @@ public class Budget : Entity
         Name = Guard.Against.NullOrWhiteSpace(name, nameof(name));
     }
 
+    public void Update(string name)
+    {
+        Name = Guard.Against.NullOrWhiteSpace(name, nameof(name));
+    }
+
     public void AddMonthlyBudget(MonthlyBudget budget)
     {
         _monthlyBudgets.Add(budget);
