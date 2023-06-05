@@ -14,18 +14,6 @@ public class MonthlyBudgetController : ControllerBase
 		_service = service;
 	}
 
-	[HttpGet]
-	public async Task<List<MonthlyBudgetDto.Index>> GetIndexAsync()
-	{
-		return await _service.GetIndexAsync();
-	}
-
-	[HttpGet("{id}")]
-	public async Task<MonthlyBudgetDto.Detail> GetDetailAsync(Guid id)
-	{
-		return await _service.GetDetailAsync(id);
-	}
-
 	[HttpPut("AddIncome")]
 	public async Task AddIncomeAsync([FromBody] MonthlyBudgetRequest.AddIncome request)
 	{

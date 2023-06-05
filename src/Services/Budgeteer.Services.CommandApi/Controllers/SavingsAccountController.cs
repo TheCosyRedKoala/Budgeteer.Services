@@ -20,12 +20,6 @@ public class SavingsAccountController : ControllerBase
 		return await _service.CreateAsync(model);
 	}
 
-	[HttpGet] 
-	public async Task<List<SavingsAccountDto.Index>> GetIndexAsync()
-	{
-		return await _service.GetIndexAsync();
-	}
-
 	[HttpPut("RemoveSaving")]
 	public async Task RemoveSavingAsync([FromBody] SavingsAccountRequest.RemoveSaving request)
 	{
