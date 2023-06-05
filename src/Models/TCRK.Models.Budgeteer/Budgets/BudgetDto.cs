@@ -1,4 +1,6 @@
-﻿namespace TCRK.Models.Budgeteer.Budgets;
+﻿using FluentValidation.Results;
+
+namespace TCRK.Models.Budgeteer.Budgets;
 
 public static class BudgetDto
 {
@@ -12,6 +14,18 @@ public static class BudgetDto
             {
                 RuleFor(x => x.Name).NotEmpty();
             }
+
+            public Func<object, string, Task<IEnumerable<string>>> ValidateValue => async (model, propertyName) =>
+            {
+                ValidationResult result = await ValidateAsync(ValidationContext<Mutate>.CreateWithOptions((Mutate)model, x => x.IncludeProperties(propertyName)));
+
+                if (result.IsValid)
+                {
+                    return Array.Empty<string>();
+                }
+
+                return result.Errors.Select(e => e.ErrorMessage);
+            };
         }
     }
 
