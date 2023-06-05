@@ -43,7 +43,17 @@ public class BudgetRepository : IBudgetRepository
 		return budget;
 	}
 
-	public async Task AddMonthlyBudgetAsync(BudgetRequest.AddMonthlyBudget request)
+    public async Task UpdateByIdAsync(Guid id, BudgetDto.Mutate model)
+	{
+		Budget budget = await GetByIdAsync(id);
+
+		budget.Update(model.Name);
+
+		await _context.SaveChangesAsync();
+	}
+
+
+    public async Task AddMonthlyBudgetAsync(BudgetRequest.AddMonthlyBudget request)
 	{
         Budget budget = await GetByIdAsync(request.BudgetId);
 
